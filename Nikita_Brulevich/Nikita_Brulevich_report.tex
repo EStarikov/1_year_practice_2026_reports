@@ -149,8 +149,8 @@
 \midrule
 \multicolumn{4}{c}{\textbf{Sparse (разреженные, случайные)}} \\
 \midrule
-ReduceRows\_SparseSmall & 32$\times$32 & 64.2 μs & 67.6 KB \\
-ReduceCols\_SparseSmall & 32$\times$32 & 65.7 μs & 72.7 KB \\
+ReduceRows\_SparseSmall & 32$\times$32 & 64.2 $\mu$s & 67.6 KB \\
+ReduceCols\_SparseSmall & 32$\times$32 & 65.7 $\mu$s & 72.7 KB \\
 ReduceRows\_SparseMedium & 256$\times$256 & 1.73 ms & 1.27 MB \\
 ReduceCols\_SparseMedium & 256$\times$256 & 1.87 ms & 1.35 MB \\
 ReduceRows\_SparseLarge & 1024$\times$1024 & 9.31 ms & 4.59 MB \\
@@ -158,8 +158,8 @@ ReduceCols\_SparseLarge & 1024$\times$1024 & 10.16 ms & 4.97 MB \\
 \midrule
 \multicolumn{4}{c}{\textbf{DenseUniform (плотные, все 1.0)}} \\
 \midrule
-ReduceRows\_DenseUniformSmall & 32$\times$32 & 255.6 μs & 308 KB \\
-ReduceCols\_DenseUniformSmall & 32$\times$32 & 264.5 μs & 313 KB \\
+ReduceRows\_DenseUniformSmall & 32$\times$32 & 255.6 $\mu$s & 308 KB \\
+ReduceCols\_DenseUniformSmall & 32$\times$32 & 264.5 $\mu$s & 313 KB \\
 ReduceRows\_DenseUniformMedium & 256$\times$256 & 56.7 ms & 17.6 MB \\
 ReduceCols\_DenseUniformMedium & 256$\times$256 & 72.4 ms & 17.6 MB \\
 ReduceRows\_DenseUniformLarge & 1024$\times$1024 & 856 ms & 276 MB \\
@@ -167,8 +167,8 @@ ReduceCols\_DenseUniformLarge & 1024$\times$1024 & 1137 ms & 277 MB \\
 \midrule
 \multicolumn{4}{c}{\textbf{DenseRandom (плотные, случайные)}} \\
 \midrule
-ReduceRows\_DenseRandomSmall & 32$\times$32 & 277.6 μs & 308 KB \\
-ReduceCols\_DenseRandomSmall & 32$\times$32 & 293.2 μs & 312 KB \\
+ReduceRows\_DenseRandomSmall & 32$\times$32 & 277.6 $\mu$s & 308 KB \\
+ReduceCols\_DenseRandomSmall & 32$\times$32 & 293.2 $\mu$s & 312 KB \\
 ReduceRows\_DenseRandomMedium & 256$\times$256 & 77.9 ms & 17.6 MB \\
 ReduceCols\_DenseRandomMedium & 256$\times$256 & 74.6 ms & 17.6 MB \\
 ReduceRows\_DenseRandomLarge & 1024$\times$1024 & 1072 ms & 276 MB \\
@@ -177,7 +177,7 @@ ReduceCols\_DenseRandomLarge & 1024$\times$1024 & 1106 ms & 277 MB \\
 \end{tabular}
 \end{table}
 
-Разреженные матрицы демонстрируют преимущество над плотными во всех размерах. На малых матрицах (32$\times$32) выигрыш составляет 3-4 раза (64-66 μs против 256-293 μs), на средних (256$\times$256)~--- 30-40 раз (1.7-1.9 ms против 56-78 ms), на больших (1024$\times$1024)~--- до 120 раз (9-10 ms против 856-1137 ms). Аллокации памяти также отличаются в 4, 15 и 60 раз соответственно. Результаты времени выполнения для плотных матриц с единичными и случайными значениями (DenseUniform и DenseRandom) близки, разница не превышает 25\%, разница объёма аллоцированной памяти~--- не более 2\%.
+Разреженные матрицы демонстрируют преимущество над плотными во всех размерах. На малых матрицах (32$\times$32) выигрыш составляет 3-4 раза (64-66 $\mu$s против 256-293 $\mu$s), на средних (256$\times$256)~--- 30-40 раз (1.7-1.9 ms против 56-78 ms), на больших (1024$\times$1024)~--- до 120 раз (9-10 ms против 856-1137 ms). Аллокации памяти также отличаются в 4, 15 и 60 раз соответственно. Результаты времени выполнения для плотных матриц с единичными и случайными значениями (DenseUniform и DenseRandom) близки, разница не превышает 25\%, разница объёма аллоцированной памяти~--- не более 2\%.
 
 
 \textbf{Сравнение reduceCols и reduceCols как transpose + reduceRows}
@@ -196,8 +196,8 @@ ReduceCols\_DenseRandomLarge & 1024$\times$1024 & 1106 ms & 277 MB \\
 \cline{3-6}
 & & Оригинал & Транспонирование & Оригинал & Транспонирование & \\
 \midrule
-ReduceCols\_SparseSmall & 32$\times$32 & 66.5 μs & 78.5 μs & 72.7 KB & 75.0 KB & +18\% \\
-ReduceCols\_DenseSmall & 32$\times$32 & 265 μs & 261 μs & 313 KB & 310 KB & -1.5\% \\
+ReduceCols\_SparseSmall & 32$\times$32 & 66.5 $\mu$s & 78.5 $\mu$s & 72.7 KB & 75.0 KB & +18\% \\
+ReduceCols\_DenseSmall & 32$\times$32 & 265 $\mu$s & 261 $\mu$s & 313 KB & 310 KB & -1.5\% \\
 ReduceCols\_SparseMedium & 256$\times$256 & 1.84 ms & 2.78 ms & 1.35 MB & 1.40 MB & +51\% \\
 ReduceCols\_DenseMedium & 256$\times$256 & 64.8 ms & 57.5 ms & 17.6 MB & 17.6 MB & \textbf{-11\%} \\
 ReduceCols\_SparseLarge & 1024$\times$1024 & 9.89 ms & 19.5 ms & 4.97 MB & 5.10 MB & +97\% \\
@@ -234,12 +234,12 @@ ReduceCols\_DenseLarge & 1024$\times$1024 & 1.14 s & 0.89 s & 277 MB & 277 MB & 
 \toprule
 Метод & Размер & Время (Mean) & Аллокации \\
 \midrule
-Slice\_SparseSmall & 32 & 2.6 μs & 3.8 KB \\
-Slice\_DenseSmall & 32 & 2.8 μs & 4.5 KB \\
-Slice\_SparseMedium & 256 & 29.7 μs & 42.5 KB \\
-Slice\_DenseMedium & 256 & 31.6 μs & 46.3 KB \\
-Slice\_SparseLarge & 1024 & 181 μs & 212 KB \\
-Slice\_DenseLarge & 1024 & 178 μs & 216 KB \\
+Slice\_SparseSmall & 32 & 2.6 $\mu$s & 3.8 KB \\
+Slice\_DenseSmall & 32 & 2.8 $\mu$s & 4.5 KB \\
+Slice\_SparseMedium & 256 & 29.7 $\mu$s & 42.5 KB \\
+Slice\_DenseMedium & 256 & 31.6 $\mu$s & 46.3 KB \\
+Slice\_SparseLarge & 1024 & 181 $\mu$s & 212 KB \\
+Slice\_DenseLarge & 1024 & 178 $\mu$s & 216 KB \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -253,8 +253,8 @@ Slice\_DenseLarge & 1024 & 178 μs & 216 KB \\
 \toprule
 Метод & Размер & Время (Mean) & Аллокации \\
 \midrule
-MatrixSlice\_SparseSmall & 32$\times$32 & 68.8 μs & 68 KB \\
-MatrixSlice\_DenseSmall & 32$\times$32 & 53.3 μs & 77 KB \\
+MatrixSlice\_SparseSmall & 32$\times$32 & 68.8 $\mu$s & 68 KB \\
+MatrixSlice\_DenseSmall & 32$\times$32 & 53.3 $\mu$s & 77 KB \\
 MatrixSlice\_SparseMedium & 256$\times$256 & 14.0 ms & 6.9 MB \\
 MatrixSlice\_DenseMedium & 256$\times$256 & 15.0 ms & 7.2 MB \\
 MatrixSlice\_SparseLarge & 1024$\times$1024 & 285 ms & 138 MB \\
@@ -274,7 +274,7 @@ MatrixSlice\_DenseLarge & 1024$\times$1024 & 302 ms & 139 MB \\
 \toprule
 Метод & Исходный размер & Время (Mean) & Аллокации \\
 \midrule
-Kronecker\_SparseSmall & 8$\times$8 & 92.1 μs & 86 KB \\
+Kronecker\_SparseSmall & 8$\times$8 & 92.1 $\mu$s & 86 KB \\
 Kronecker\_DenseSmall & 8$\times$8 & 2.31 ms & 1.5 MB \\
 Kronecker\_SparseMedium & 16$\times$16 & 1.20 ms & 229 KB \\
 Kronecker\_DenseMedium & 16$\times$16 & 114 ms & 31 MB \\
@@ -284,7 +284,7 @@ Kronecker\_DenseLarge & 32$\times$32 & 1.29 s & 576 MB \\
 \end{tabular}
 \end{table}
 
-Выигрыш разреженных матриц над плотными растёт с размером. Для матриц 8$\times$8 разреженная быстрее в 25 раз (92 μs против 2.3 ms), для 16$\times$16~--- в 95 раз (1.2 ms против 114 ms), для 32$\times$32~--- в 200 раз (6.2 ms против 1.29 с). Аллокации памяти различаются ещё сильнее: 86 KB против 1.5 MB (8$\times$8), 229 KB против 31 MB (16$\times$16), 112 KB против 576 MB (32$\times$32). Соотношение по памяти достигает 5000 раз на максимальном размере.
+Выигрыш разреженных матриц над плотными растёт с размером. Для матриц 8$\times$8 разреженная быстрее в 25 раз (92 $\mu$s против 2.3 ms), для 16$\times$16~--- в 95 раз (1.2 ms против 114 ms), для 32$\times$32~--- в 200 раз (6.2 ms против 1.29 с). Аллокации памяти различаются ещё сильнее: 86 KB против 1.5 MB (8$\times$8), 229 KB против 31 MB (16$\times$16), 112 KB против 576 MB (32$\times$32). Соотношение по памяти достигает 5000 раз на максимальном размере.
 
 \section*{Заключение}
 В результате выполнения работы все поставленные задачи были решены. Реализованные операции \texttt{reduceRows}, \texttt{reduceCols}, \texttt{Vector.slice}, \texttt{Matrix.slice}, \texttt{kroneckerProduct} и \texttt{map} прошли модульное тестирование и интегрированы в библиотеку QTreeFSharp.
